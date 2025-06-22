@@ -1,0 +1,12 @@
+from decouple import config
+from datetime import timedelta
+
+DATABASE_URL = config('DATABASE_URL')
+SECRET_KEY = config('SECRET_KEY')
+ALGORITHM = config('ALGORITHM', default='HS256')
+ACCESS_TOKEN_EXPIRE_MINUTES = config('ACCESS_TOKEN_EXPIRE_MINUTES', default=30, cast=int)
+REFRESH_TOKEN_EXPIRE_DAYS = 7
+
+
+ACCESS_TOKEN_EXPIRE_TIMEDELTA = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+REFRESH_TOKEN_EXPIRE_TIMEDELTA = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
