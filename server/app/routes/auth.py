@@ -108,7 +108,6 @@ def refresh_access_token(refresh_token: str, db: Session = Depends(get_db)):
 @router.post("/logout")
 def logout_user(refresh_token: str, db: Session = Depends(get_db)):
     """Logout user by revoking refresh token"""
-    
     success = revoke_refresh_token(db, refresh_token)
     if not success:
         raise HTTPException(

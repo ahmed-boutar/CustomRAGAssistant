@@ -10,14 +10,12 @@ def test_imports():
     try:
         from server.app.database import engine
         print("✅ Database module imported successfully!")
-        return True
     except Exception as e:
         print(f"❌ Import failed: {e}")
         print("   Make sure you have:")
         print("   - app/__init__.py file")
         print("   - app/database.py file") 
         print("   - Virtual environment activated")
-        return False
     
 def test_database_connection():
     """Test if we can connect to the database"""
@@ -27,11 +25,9 @@ def test_database_connection():
         connection = engine.connect()
         print("✅ Database connection successful!")
         connection.close()
-        return True
     except Exception as e:
         print(f"❌ Database connection failed: {e}")
         print("   Check your DATABASE_URL in config.py")
-        return False
 
 def main():
     """Run  tests step by step"""

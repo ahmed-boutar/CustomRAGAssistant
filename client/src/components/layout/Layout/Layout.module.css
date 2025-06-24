@@ -1,0 +1,23 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+@media (min-width: 768px) {
+  .content {
+    position: relative;
+  }
+}
