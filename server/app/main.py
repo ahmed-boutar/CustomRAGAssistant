@@ -1,13 +1,23 @@
 # app/main.py
-from fastapi import FastAPI
+import logging
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-
-from .routes import auth
+from .routes import auth, inference, upload, sessions
 from .database import create_tables
 
 app = FastAPI(title="RAG Chat API", 
               description="Backend API for RAG-based chat application",
               version="1.0.0")
+
+logger = logging.getLogger(__name__)
+
+@app.middleware("http")
+async def log_exceptions(request: Request, call_next):
+    try:
+        return await call_next(request)
+    except Exception as e:
+        logger.exception(f"Unhandled error: {e}")
+        raise
 
 # Create tables on startup
 @app.on_event("startup")
@@ -26,6 +36,10 @@ app.add_middleware(
 
 # Include routers
 app.include_router(auth.router)
+app.include_router(inference.router)
+app.include_router(upload.router)
+app.include_router(sessions.router)
+
 
 @app.get("/")
 def read_root():

@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+}
+
+.toggle:hover {
+  border-color: #9ca3af;
+}
+
+.toggle.enabled {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.switch {
+  width: 2rem;
+  height: 1rem;
+  background-color: #d1dbd4;
+  border-radius: 0.5rem;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.switch.switchEnabled {
+  background-color: #2563eb;
+}
+
+.switchThumb {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  transition: transform 0.2s;
+}
+
+.switchEnabled .switchThumb {
+  transform: translateX(1rem);
+}
+
+.status {
+  font-size: 0.75rem;
+  color: #059669;
+  font-weight: 500;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modalContent p {
+  margin: 0;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+

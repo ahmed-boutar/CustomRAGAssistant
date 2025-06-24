@@ -19,6 +19,6 @@ def get_db():
 def create_tables():
     """Create all tables"""
     # Import all models to make sure they're registered with Base
-    from .models import User, RefreshToken
+    from .models import User, RefreshToken, Document, ChatSession, ChatMessage
     
     Base.metadata.create_all(bind=engine)
