@@ -135,7 +135,7 @@ Deletes a user session.
 
 ---
 
-### 📤 Upload `/upload`
+### Upload `/upload`
 
 #### `POST /upload/document`
 
@@ -146,7 +146,7 @@ Uploads a `.pdf` or `.docx` file, extracts text, chunks, embeds, stores in Pinec
 
 ---
 
-### 🧠 Inference `/inference/query`
+### Inference `/inference/query`
 
 #### `POST /inference/query`
 
@@ -165,64 +165,4 @@ Uploads a `.pdf` or `.docx` file, extracts text, chunks, embeds, stores in Pinec
     "response": "Retrieval-Augmented Generation (RAG)..."
   }
   ```
-
----
-
-## 🛡️ 2. Security Measures & Responsible AI
-
-### 🔐 Security Measures
-
-- **JWT Authentication**: Access + Refresh tokens
-- **Token Revocation**: Backend database tracks valid refresh tokens
-- **bcrypt**: Password hashing using strong one-way algorithm
-- **Input Validation**: Via Pydantic models
-- **Session Ownership Checks**: User-specific access enforced
-- **HTTPS (prod)**: Assumed via cloud deployment
-
-### 🧠 Responsible AI
-
-- **Bedrock Use**: Claude and Titan enforce safety at the foundation layer
-- **RAG Control**: Toggle gives users power over document-grounded inference
-- **Prompt Filtering**: Hooks available for future moderation
-- **No Training Leakage**: No user data used to fine-tune or train LLMs
-- **Content Safety**: Adheres to Bedrock provider safety filters
-
----
-
-## 🔏 3. Privacy Controls & Compliance
-
-### 🔐 Privacy Controls
-
-- **User Isolation**:
-  - Documents indexed and stored with user-specific S3 folders and Pinecone namespaces
-- **No Model Retention**:
-  - Bedrock does not retain prompts or outputs
-- **File Access**:
-  - Only authenticated users can upload or query documents
-- **Prompt Logging**:
-  - Debug only (no long-term storage)
-
-### 📄 Compliance Documentation
-
-- **Storage Providers**:
-  - S3 (encryption-at-rest)
-  - PostgreSQL (hosted in cloud, authentication enabled)
-- **LLM Providers**:
-  - Amazon Bedrock (enterprise-grade compliance & auditability)
-- **Data Residency**:
-  - Configurable via AWS Region
-- **Access Logging**:
-  - Available at infrastructure level via CloudTrail (if configured)
-- **PII Protections**:
-  - No PII is stored in logs
-  - Strong password hashing
-  - Users control document lifecycle (upload/delete)
-
----
-
-Each of these documents can now be placed in `documentation/`:
-
-- `api_documentation.md`
-- `security_and_responsible_ai.md`
-- `privacy_and_compliance.md`
 
